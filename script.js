@@ -16,10 +16,13 @@
 // countSmileys([';]', ':[', ';*', ':$', ';-D']); //  ==> return 1;
 
 // **** Task-2 ****
-function solution(str, ending) {
-   return str.endsWith(ending);
-}
+// function solution(str, ending) {
+//    return str.endsWith(ending);
+// }
 
-console.log(solution('abc', 'bc'));
-console.log(solution('abcde', 'abc'));
-console.log(solution('sumo', 'omo'));
+// console.log(solution('abc', 'bc'));
+// console.log(solution('abcde', 'abc'));
+// console.log(solution('sumo', 'omo'));
+
+// **** Task-3****
+console.log('1');
