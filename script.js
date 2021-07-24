@@ -72,3 +72,40 @@
 //       return a;
 //    }
 // }
+
+// **** Task-7 - Square Every Digit****
+// function squareDigits(num) {
+//   let arr = String(num).split('');
+//   return parseFloat(arr.map(item => item ** 2).join(''));
+// }
+// console.log(squareDigits(3212));
+
+// **** Task-8 - Exes and Ohs****
+// function XO(str) {
+//   let arr = str.toLowerCase().split('');
+
+//   let x = 0;
+//   let o = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === 'o') {
+//       o += 1;
+//     } else if (arr[i] === 'x') {
+//       x += 1;
+//     }
+//   }
+//   return x == o ? true : false;
+// }
+// console.log(XO('Oo'));
+
+// const XO = str => {
+//   str = str.toLowerCase().split('');
+//   return str.filter(x => x === 'x').length === str.filter(x => x === 'o').length;
+// }
+
+// **** Task-9 - Form The Minimum****
+// function minValue(values) {
+//   let arr = [...new Set(values)];
+
+//   return parseInt(arr.sort((a, b) => a - b).join(''));
+// }
+// minValue([4, 7, 5, 7]);
