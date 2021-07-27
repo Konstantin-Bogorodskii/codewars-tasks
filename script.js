@@ -24,7 +24,7 @@
 // console.log(solution('abcde', 'abc'));
 // console.log(solution('sumo', 'omo'));
 
-// **** Task-3****
+// **** Task-3 ****
 // Отсортировать от меньшего кол-ва букв к большему
 // function sortByLength(array) {
 //    return array.sort((a, b) => {
@@ -44,7 +44,7 @@
 //   return sum;
 // }
 // findSum(5);
-// **** Task-5****
+// **** Task-5 ****
 // function oddOrEven(array) {
 //    if (array.length > 0) {
 //       let b = array.reduce((accum, elem) => accum + elem);
@@ -58,7 +58,7 @@
 // }
 // console.log(oddOrEven([0, 3, -4]));
 
-// **** Task-6****
+// **** Task-6 ****
 // function getSum(a, b) {
 //    let max = Math.max(a, b);
 //    let min = Math.min(a, b);
@@ -73,14 +73,14 @@
 //    }
 // }
 
-// **** Task-7 - Square Every Digit****
+// **** Task-7 - Square Every Digit ****
 // function squareDigits(num) {
 //   let arr = String(num).split('');
 //   return parseFloat(arr.map(item => item ** 2).join(''));
 // }
 // console.log(squareDigits(3212));
 
-// **** Task-8 - Exes and Ohs****
+// **** Task-8 - Exes and Ohs ****
 // function XO(str) {
 //   let arr = str.toLowerCase().split('');
 
@@ -102,10 +102,44 @@
 //   return str.filter(x => x === 'x').length === str.filter(x => x === 'o').length;
 // }
 
-// **** Task-9 - Form The Minimum****
+// **** Task-9 - Form The Minimum ****
 // function minValue(values) {
 //   let arr = [...new Set(values)];
 
 //   return parseInt(arr.sort((a, b) => a - b).join(''));
 // }
 // minValue([4, 7, 5, 7]);
+
+// **** Task-10 - Highest and Lowest ****
+// function highAndLow(numbers) {
+//   numbers = numbers.split(' ');
+//   return `${Math.max(...numbers)} ${Math.min(...numbers)}`;
+// }
+// highAndLow('1 2 3 4 5');
+
+// **** Task-11 - Sort Numbers ****
+// function solution(nums) {
+//   if (nums) {
+//     return nums.sort(function (a, b) {
+//       return a - b;
+//     });
+//   } else {
+//     return [];
+//   }
+// }
+
+// function solution(nums){
+//   return (nums || []).sort(function(a, b){
+//     return a - b
+//   });
+// }
+// console.log(solution([1, 2, 10, 50, 5])); // should return [1,2,5,10,50]
+// solution(null); // []
+
+// **** Task-12 - Friend or Foe? ****
+// function friend(friends) {
+//   return friends.filter(item => item.length === 4);
+// }
+// friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+
+// **** Task-13 - Friend or Foe? ****
