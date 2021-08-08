@@ -143,3 +143,88 @@
 // friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
 
 // **** Task-13 - Friend or Foe? ****
+
+// function pigIt(str) {
+//   let arr = [];
+//   let newStr = str.split(' ');
+//   for (var i = 0; i < newStr.length; i++) {
+//     if (newStr[i].length > 1) {
+//       let firstLetter = newStr[i].slice(0, 1);
+//       let newWord = newStr[i].slice(1) + firstLetter + 'ay';
+//       arr.push(newWord);
+//     } else {
+//       arr.push(newStr[i] + 'ay');
+//     }
+//   }
+//   console.log(arr.join(' '));
+//   // return arr.join(' ');
+// }
+// pigIt('O emporatay o oresmay !');
+
+// **** Task-14  ****
+// const sort = word => word.split('').sort().join('');
+// function anagrams(word, words) {
+//    let token = sort(word);
+
+//    return words.filter(w => sort(w) === token);
+// }
+// console.log(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']));
+
+// **** Task-15 - Valid Brackets ****
+
+// function isValid(arr) {
+//   let stack = [];
+//   let brackets = {
+//     ')': '(',
+//     ']': '[',
+//     '}': '{',
+//   };
+
+//   for (let i = 0; i < arr.length; i++) {
+//     const element = arr[i];
+
+//     if (closedBracket(element)) {
+//       if (brackets[element] !== stack.pop()) return false;
+//     } else {
+//       stack.push(element);
+//     }
+//   }
+
+//   return stack.length === 0;
+// }
+
+// function closedBracket(element) {
+//   return [')', '}', ']'].indexOf(element) > -1;
+// }
+// console.log(isValid('(){[]}'));
+
+// **** Task-16 - Reverse words ****
+// function reverseWords(str) {
+//   let newStr = str.split(' ').map(item => {
+//     return item.split('').reverse().join('');
+//   });
+
+//   return newStr.join(' ');
+// }
+// console.log(reverseWords('The quick brown fox jumps over the lazy dog.'));
+
+// **** Task-17 - Sorted? yes? no? how? ****
+// 1. Чтобы скопировать массива можно использовать slice()
+// 2. Чтобы сравнить два массива по значениям можно использовать join('')
+
+function isSortedAndHow(array) {
+  const arr = array.slice().sort((a, b) => a < b);
+  const arr2 = array.slice().sort((a, b) => a - b);
+  if (array.join('') == arr2.join('')) return 'yes, ascending';
+  if (array.join('') == arr.join('')) return 'yes, descending';
+  return 'no';
+}
+console.log(isSortedAndHow([1, 2, 12]));
+console.log(isSortedAndHow([15, 7, 3, -8]));
+
+const isSortedAndHow = array => {
+  let ascending = array.filter((e, i, a) => e > a[i + 1]).length == 0;
+  let descending = array.filter((e, i, a) => e < a[i + 1]).length == 0;
+
+  return ascending ? 'yes, ascending' : descending ? 'yes, descending' : 'no';
+};
