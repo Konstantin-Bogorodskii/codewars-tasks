@@ -465,6 +465,8 @@
 //     return acc;
 //   }, {});
 
+//   console.log(map);
+
 //   for (let i = 0; i < arr2.length; i++) {
 //     const element = arr2[i];
 //     let count = map[element];
@@ -502,3 +504,125 @@
 // }
 
 // console.log(firstUniqChar('ddnnnnsfsfoollff'));
+
+// **** Task-33 -  Матрица ****
+
+// let grid1 = [
+//   ['1','1','1','1','0']
+//   ['1','1','0','1','0']
+//   ['1','1','0','0','0']
+//   ['0','0','0','0','0']
+// ]
+
+// let grid2 = [
+//   ['1','1','0','0','0']
+//   ['1','1','0','0','0']
+//   ['0','0','1','0','0']
+//   ['0','0','0','1','1']
+// ]
+
+// function numIsLands(grid) {
+
+// }
+
+// **** Task-34 -  Palindrome   ****
+
+// function palindrom(str) {
+//   str = str.toLowerCase().replace(/\s/g, '');
+//   return str === str.split('').reverse().join('');
+// }
+
+// console.log(palindrom('racecar'));
+// console.log(palindrom('table'));
+// console.log(palindrom('Анна'));
+// console.log(palindrom('А роза упала на лапу Азора'));
+
+// **** Task-35 - fizzBuzz  ****
+
+// function fizzBuzz(n) {
+//   for (let i = 1; i <= n; i++) {
+//     if (i % 3 === 0 && i % 5 === 0) {
+//       console.log('fizzbuzz');
+//       continue;
+//     }
+//     if (i % 3 === 0) {
+//       console.log('fizz');
+//       continue;
+//     }
+//     if (i % 5 === 0) {
+//       console.log('buzz');
+//       continue;
+//     }
+//     console.log(i);
+//   }
+// }
+// fizzBuzz(15);
+
+// **** Task-36 - Find Vowels ****
+// function isVowelRegEx(char) {
+//   let filt = [...char].filter(item => /[aeiou]/.test(item));
+//   return filt.length;
+// }
+// console.log(isVowelRegEx('helloaaa'));
+
+// **** Task-37 - Fibonacci ****
+
+// function fib(n) {
+//   if (n < 2) return 1;
+//   return fib(n - 1) + fib(n - 1);
+// }
+
+// console.log(fib(10));
+
+// function fib(n) {
+//   let a = 1;
+//   let b = 1;
+//   let res = [1, 1];
+//   for (let i = 3; i < n; i++) {
+//     let c = a + b;
+//     res.push(c);
+//     a = b;
+//     b = c;
+//   }
+//   return res;
+// }
+// console.log(fib(10));
+
+// **** Task-36 - Class Names ****
+// let classNames = [
+//   'header',
+//   'menu',
+//   'menu-item',
+//   'menu-item',
+//   'footer',
+//   'menu',
+//   'link',
+//   'link',
+//   'link',
+//   'link',
+// ];
+// let map = classNames.reduce((accum, item) => {
+//   accum[item] = accum[item] ? accum[item] + 1 : 1;
+//   return accum;
+// }, {});
+
+// let res = Object.keys(map).sort((a, b) => map[b] - map[a]);
+// console.log(res);
+
+// **** Task-36 - Currencies ****
+
+const input = [
+  ['usd', 'buy', 10000],
+  ['usd', 'sell', 5000],
+  ['gbp', 'buy', 9000],
+  ['eur', 'buy', 7000],
+  ['uah', 'buy', 10000],
+  ['usd', 'sell', 25000],
+];
+
+let map = input.reduce((accum, item) => {
+  accum[item[0]] = accum[item[0]] ? accum[item[0]] + accum[item[2]] : 0;
+  console.log(accum[item[0]]);
+  return accum;
+}, {});
+console.log(map);
