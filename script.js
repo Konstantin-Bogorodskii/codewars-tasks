@@ -105,10 +105,11 @@
 // **** Task-9 - Form The Minimum ****
 // function minValue(values) {
 //   let arr = [...new Set(values)];
+//   console.log(arr);
 
 //   return parseInt(arr.sort((a, b) => a - b).join(''));
 // }
-// minValue([4, 7, 5, 7]);
+// console.log(minValue([4, 7, 5, 7]));
 
 // **** Task-10 - Highest and Lowest ****
 // function highAndLow(numbers) {
@@ -610,19 +611,126 @@
 // console.log(res);
 
 // **** Task-36 - Currencies ****
+// const input = [
+//   ['usd', 'buy', 10000],
+//   ['usd', 'sell', 5000],
+//   ['gbp', 'buy', 9000],
+//   ['gbp', 'buy', 1000],
+//   ['eur', 'buy', 7000],
+//   ['uah', 'buy', 10000],
+//   ['usd', 'sell', 25000],
+// ];
 
-const input = [
-  ['usd', 'buy', 10000],
-  ['usd', 'sell', 5000],
-  ['gbp', 'buy', 9000],
-  ['eur', 'buy', 7000],
-  ['uah', 'buy', 10000],
-  ['usd', 'sell', 25000],
-];
+// let map = input.reduce((accum, item) => {
+//   let [currency, type, value] = item;
+//   if (!accum[currency]) {
+//     accum[currency] = [0, 0];
+//   }
 
-let map = input.reduce((accum, item) => {
-  accum[item[0]] = accum[item[0]] ? accum[item[0]] + accum[item[2]] : 0;
-  console.log(accum[item[0]]);
-  return accum;
-}, {});
-console.log(map);
+//   accum[currency][type === 'buy' ? 0 : 1] += value;
+//   return accum;
+// }, {});
+// console.log(map);
+
+// **** Task-37 - Maze **** ---- ДОРЕШАТЬ!
+
+// let maze = [
+//   [1, 1, 1, 0, 0, 1],
+//   [1, 1, 1, 1, 0, 1],
+//   [0, 0, 0, 0, 0, 0],
+//   [0, 1, 1, 1, 1, 1],
+//   [0, 0, 0, 0, 0, 0],
+//   [1, 1, 1, 1, 1, 0],
+// ];
+
+// function checkPath(x, y) {}
+// console.log(checkPath({ x: 3, y: 0 }, { x: 5, y: 5 }));
+
+// **** Task-37 - Уникализация значений в массиве. ****
+
+// ---- 1 способ ---
+// function unique(arr) {
+//   let res = [];
+//   arr.forEach(item => {
+//     if (res.indexOf(item) === -1) {
+//       res.push(item);
+//     }
+//   });
+
+//   return res;
+// }
+// console.log(unique([1, 1, 2, 2, 4, 2, 3, 7, 3]));
+
+// ---- 2 способ ---
+// indexOf - ищет ПЕРВЫЙ индекс элемента  и если есть совпадения то у последующих будет индекс первого вхождения
+// function uniqueValuesOfArray(arr) {
+//   return arr.filter((item, index) => {
+//     return index === arr.indexOf(item);
+//   });
+// }
+// console.log(uniqueValuesOfArray([1, 1, 2, 25, 9, 3, 24, 25]));
+
+// ---- 3 способ ---
+// function uniqueValuesOfArray(arr) {
+//   // return [...new Set(arr)];
+//   // return Array.from(new Set(arr));
+// }
+// console.log(uniqueValuesOfArray([1, 1, 2, 25, 9, 3, 24, 25]));
+
+// ---- 4 способ ---
+// function uniqueValuesOfArray(arr) {
+//   return arr.reduce((accum, item) => {
+//     return accum.includes(item) ? accum : [...accum, item];
+//   }, []);
+// }
+// console.log(uniqueValuesOfArray([1, 1, 2, 25, 9, 3, 24, 25]));
+
+// **** Task-37 -  «Расплющивание» массива. ****
+// flat([1, [2, [3, [4,5]]]]); // => [1, 2, 3, 4, 5]
+// Метод flat() возвращает новый массив, в котором все элементы вложенных подмассивов были рекурсивно "подняты" на указанный уровень depth.
+// var newArray = arr.flat(depth);
+// console.log([1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]].flat(Infinity)) - [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+
+// **** Task-37 -  Обход дерева ****
+const tree = {
+  value: 1,
+  children: [
+    {
+      value: 2,
+      children: [{ value: 4 }, { value: 5 }],
+    },
+    {
+      value: 3,
+      children: [{ value: 6 }, { value: 7 }],
+    },
+  ],
+};
+// getTreeValues(tree); // => [1, 2, 3, 4, 5, 6, 7]
+
+// **** Task-38 -  Бинарный поиск  ****
+// ПОМОГАЕТ ИСКАТЬ НУЖНЫЕ ДАННЫЕ В БОЛЬШИХ МАССИВАХ
+// Бинарный поиск позволяет выполнять поиск в отсортированном массиве путем многократного разбиения массива пополам. Бинарный поиск выполняется путем проверки того, является ли искомое значение больше, меньше или равно среднему значению в нашем массиве: Если оно меньше, мы можем удалить правую половину массива.
+
+// let search = function (nums, target) {
+//   let left = 0;
+//   let right = arr.length - 1;
+//   let mid;
+
+//   while (left <= right) {
+//     mid = Math.round((right - left) / 2 + left);
+
+//     if (target === arr[mid]) {
+//       return mid;
+//     } else if (target < nums[mid]) {
+//       right = mid - 1;
+//     } else {
+//       left = mid + 1;
+//     }
+//   }
+
+//   return -1;
+// };
+
+// const arr = [-2000, -20, -4, -1, 0, 3, 10, 15, 22, 40, 100, 1000, 10000000];
+
+// console.log(search(arr, 1000));
