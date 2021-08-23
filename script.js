@@ -332,16 +332,14 @@
 // console.log(anagrams('laser', ['lazing', 'lazy', 'lacer']));
 
 // **** Task-27 - Perimeter of squares in a rectangle **** !!!! ДОРЕШАТЬ !!!!!
-// function perimeter(a, n) {
-//   function fib(n) {
-//     if (n < 2) {
-//       return 1;
-//     }
-//     return fib(n - 1) + fib(n - 2);
+// function perimeter(n) {
+//   if (n < 2) {
+//     return 1;
 //   }
+//   return perimeter(n - 2) + perimeter(n - 2);
 // }
 
-// console.log(perimeter(10, 7));
+// console.log(perimeter(7));
 
 // **** Task-28 - Extract the domain name from a URL ****
 // function domainName(url) {
@@ -691,22 +689,6 @@
 // var newArray = arr.flat(depth);
 // console.log([1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]].flat(Infinity)) - [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 
-// **** Task-37 -  Обход дерева ****
-const tree = {
-  value: 1,
-  children: [
-    {
-      value: 2,
-      children: [{ value: 4 }, { value: 5 }],
-    },
-    {
-      value: 3,
-      children: [{ value: 6 }, { value: 7 }],
-    },
-  ],
-};
-// getTreeValues(tree); // => [1, 2, 3, 4, 5, 6, 7]
-
 // **** Task-38 -  Бинарный поиск  ****
 // ПОМОГАЕТ ИСКАТЬ НУЖНЫЕ ДАННЫЕ В БОЛЬШИХ МАССИВАХ
 // Бинарный поиск позволяет выполнять поиск в отсортированном массиве путем многократного разбиения массива пополам. Бинарный поиск выполняется путем проверки того, является ли искомое значение больше, меньше или равно среднему значению в нашем массиве: Если оно меньше, мы можем удалить правую половину массива.
@@ -734,3 +716,252 @@ const tree = {
 // const arr = [-2000, -20, -4, -1, 0, 3, 10, 15, 22, 40, 100, 1000, 10000000];
 
 // console.log(search(arr, 1000));
+
+// **** Task-39 -  Find the odd int  ****
+
+// function findOdd(arr) {
+//   let map = arr.reduce((acc, item) => {
+//     acc[item] = acc[item] ? acc[item] + 1 : 1;
+//     return acc;
+//   }, {});
+//   for (const key in map) {
+//     if (map[key] % 2 != 0) return +key;
+//   }
+// }
+// console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]));
+
+// const findOdd = xs => xs.reduce((a, b) => a ^ b);
+// console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]));
+
+// **** Task-40 -  Multiples of 3 or 5 ****
+
+// function solution(number) {
+//   let sum = 0;
+//   for (let i = 1; i < number; i++) {
+//     if (i % 3 === 0 && i % 5 === 0) {
+//       sum += i;
+//     }
+//     return sum;
+//   }
+//   return 0;
+// }
+
+// **** Task-41 -  Valid Parentheses ****
+
+// function validParentheses(parens) {
+//   let n = 0;
+//   for (let i = 0; i < parens.length; i++) {
+//     if (parens[i] == '(') n++;
+//     if (parens[i] == ')') n--;
+//     if (n < 0) return false;
+//   }
+
+//   return n == 0;
+// }
+// console.log(validParentheses('((()))'));
+
+// **** Task-41 -  Simple Pig Latin ****
+// function pigIt(str) {
+//   let arr = [];
+//   let newStr = str.split(' ');
+//   for (let i = 0; i < newStr.length; i++) {
+//     if (newStr[i].length > 1) {
+//       let firstLetter = newStr[i].slice(0, 1);
+//       let newWord = newStr[i].slice(1) + firstLetter + 'ay';
+//       arr.push(newWord);
+//     } else if (newStr[i].length === 1 && /^[A-Za-z]+$/.test(newStr[i])) {
+//       arr.push(newStr[i] + 'ay');
+//     } else {
+//       arr.push(newStr[i]);
+//     }
+//   }
+//   return arr.join(' ');
+// }
+// console.log(pigIt('P latin is cool !'));
+
+// function pigIt(str) {
+//   return str.replace(/\w+/g, (w) => {
+//     return w.slice(1) + w[0] + 'ay';
+//   });
+// }
+
+// **** Task-42 -  RGB To Hex Conversion ****
+// function rgb(r, g, b) {
+//   const convert = function(val) {
+//     if(val < 0) {
+//       return '00';
+//     }
+//     if(val > 255) {
+//       return 'FF';
+//     }
+//     return (val > 15 ? val.toString(16) : '0' + val.toString(16)).toUpperCase();
+//   }
+//   return convert(r) + convert(g) + convert(b);
+// }
+
+// console.log(rgb(255, 0, 255));
+// console.log(rgb(0, 0, -20));
+// console.log(rgb(1734, 255, 47));
+// console.log(rgb(300, 255, 255));
+// console.log(rgb(201, 3, 56));
+// console.log(rgb(33, 13, 53));
+
+// **** Task-43 -  Scramblies **** -----Дорешать
+
+// function scramble(str1, str2) {
+//   let res = [];
+//   let newStr1 = str1.split('');
+//   for (let i = 0; i < newStr1.length; i++) {
+//     const element1 = newStr1[i];
+//     for (let j = 0; j < str2.length; j++) {
+//       const element2 = str2[j];
+//       if (element1 === element2) {
+//         res.push(element2);
+//         delete newStr1[i];
+//         str2.slice(j, 1);
+//       }
+//       continue;
+//     }
+//   }
+//   return res.length === str2.length;
+// }
+
+// console.log(scramble('cedewaraaossoqqyt', 'codewars'));
+
+// **** Task-44 -  Карирование ****
+
+// function sum(a) {
+//   console.log(a);
+//   return function (b) {
+//     return sum(a + b);
+//   };
+// }
+// sum(1)(5)(10);
+// sum(1)(5)(10)(12);
+
+// **** Task-44 -  Merge keys of object ****
+
+// ---- 1 способ ---
+// let obj1 = {
+//   name: 'Kostya',
+//   age: 12,
+//   type: 'HUMAN',
+// };
+
+// let obj2 = {
+//   name: 'Misha',
+//   age: 30,
+//   typeeee: 'HUMAN',
+// };
+
+// const mergeKeysOfObjects = (obj1, obj2) => {
+//   let keys1 = Object.keys(obj1);
+//   let keys2 = Object.keys(obj2);
+
+//   for (let i = 0; i < keys1.length; i++) {
+//     const key1 = keys1[i];
+//     for (let k = 0; k < keys2.length; k++) {
+//       const key2 = keys2[k];
+
+//       if (key1 === key2) {
+//         console.log(key1, key2);
+//         obj1[key1] = obj2[key2];
+//       }
+//     }
+//   }
+//   return obj1;
+// };
+
+// console.log(mergeKeysOfObjects(obj1, obj2));
+
+// ---- 2 способ ---
+
+// const mergeKeysOfObjects = (obj1, obj2) => {
+//   for (const key in obj1) {
+//     if (obj2.hasOwnProperty(key)) {
+//       obj1[key] = obj2[key];
+//     }
+//   }
+//   return obj1;
+// };
+// console.log(mergeKeysOfObjects(obj1, obj2));
+
+// **** Task-45 -  group By ****
+
+// const arr = [6.1, 4.2, 5.3, 6.3, 5.2];
+// const callBack = Math.ceil;
+
+// const groupBy = (arr, callBack) => {
+//   let map = arr.reduce((accum, item) => {
+//     let item2 = callBack(item);
+//     accum[item2] = accum[item2] ? [...accum[item2], item].sort() : [item];
+//     return accum;
+//   }, {});
+//   return map;
+// };
+
+// console.log(groupBy(arr, callBack));
+
+// **** Task-45 -  Math Issues ****
+
+// ---- 1 способ ---
+// let round = function (number) {
+//   let numStr = String(number);
+//   let dot = numStr.indexOf('.');
+//   let strNumber = +String(number + 1).slice(0, dot);
+//   let dif = strNumber - number;
+//   if (dot === -1) {
+//     return number;
+//   }
+
+//   if (dif <= 0.5) {
+//     return +String(number + 1).slice(0, dot);
+//   } else {
+//     return +String(number).slice(0, dot);
+//   }
+// };
+
+// let ceil = function (number) {
+//   let numStr = String(number);
+//   let dot = numStr.indexOf('.');
+//   return dot > -1 ? +String(number + 1).slice(0, dot) : number;
+// };
+
+// let flooor = function (number) {
+//   let numStr = String(number);
+//   let dot = numStr.indexOf('.');
+//   return dot > -1 ? +numStr.slice(0, dot) : number; // TODO: fix this
+// };
+
+// console.log(flooor(19.9999));
+// console.log(ceil(16.5));
+// console.log(ceil(19.9999));
+// console.log(ceil(31.000000001));
+// console.log(ceil(5));
+// console.log(round(0.5));
+// console.log(round(31.000000001));
+
+// ---- 2 способ ---
+// Math.round = function (number) {
+//   return number - parseInt(number) >= 0.5 ? parseInt(number) + 1 : parseInt(number);
+// };
+
+// Math.ceil = function (number) {
+//   return parseInt(number) === number ? number : parseInt(number) + 1;
+// };
+
+// Math.floor = function (number) {
+//   return parseInt(number);
+// };
+
+// **** Task-46 -  String incrementer ****
+// function incrementString(strng) {
+//   let firstDigit = strng.match(/\d/);
+//   let index = strng.indexOf(firstDigit);
+//   let number = strng.slice(index);
+//   console.log(number);
+
+//   return number ? strng.slice(0, index) + number : strng + '1';
+// }
+// // console.log(incrementString('foobar100'));
+// console.log(incrementString('foobar001'));
