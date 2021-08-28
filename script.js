@@ -956,12 +956,183 @@
 
 // **** Task-46 -  String incrementer ****
 // function incrementString(strng) {
-//   let firstDigit = strng.match(/\d/);
-//   let index = strng.indexOf(firstDigit);
-//   let number = strng.slice(index);
-//   console.log(number);
+//   // return incrementedString
+//   let string = strng.replace(/[0-9]/g, '');
 
-//   return number ? strng.slice(0, index) + number : strng + '1';
+//   let len = strng.length - string.length;
+
+//   let str = strng.slice(string.length) || '0';
+
+//   str = (parseInt(str) + 1).toString();
+
+//   while (str.length < len) {
+//     str = '0' + str;
+//   }
+
+//   return string.concat(str);
 // }
-// // console.log(incrementString('foobar100'));
-// console.log(incrementString('foobar001'));
+// console.log(incrementString('foobar100'));
+// console.log(incrementString('foobar111'));
+// console.log(incrementString('foobar'));
+// console.log(incrementString('foobar99'));
+// console.log(incrementString('foobar00'));
+// console.log(incrementString('foobar0115'));
+// console.log(incrementString('foobar00999'));
+
+// **** Task-47 -  forEach polyfill ****
+
+// let arr = [22, 21, 23, 44, 55, 66];
+// ----- FOREACH -----
+// Array.prototype.forEachPolyfill = function (callBack, thisArg) {
+//   let context = this;
+
+//   if (context == null) {
+//     throw new Error('Not iterable!');
+//   }
+
+//   for (let i = 0; i < context.length; i++) {
+//     callBack(context[i], i, context);
+//   }
+// };
+// arr.forEachPolyfill((item, index, arr) => console.log(item, index, arr));
+
+// ----- FILTER -----
+// Array.prototype.filterPolyfill = function (callBack) {
+//   let context = this;
+
+//   if (context == null) {
+//     throw new Error('Not iterable!');
+//   }
+
+//   let res = [];
+
+//   for (let i = 0; i < context.length; i++) {
+//     if (callBack(context[i], i, context)) {
+//       res.push(context[i]);
+//     }
+//   }
+//   return res;
+// };
+// let arr2 = arr.filterPolyfill((item, index, arr) => item > 20 && item < 40);
+// console.log(arr2);
+
+// ----- MAP -----
+// Array.prototype.mapPolyfill = function (callback) {
+//   let context = this;
+
+//   let newArray = [];
+//   for (let i = 0; i < context.length; i++) {
+//     let current = context[i];
+//     let newValue;
+
+//     newValue = callback(current, i, context);
+//     newArray.push(newValue);
+//   }
+
+//   return newArray;
+// };
+// let arr2 = arr.mapPolyfill((item, index, arr) => item + 10);
+// console.log(arr2);
+
+// **** Task-48 -  Заполнение матрицы спиралью ****
+// const width = +prompt('Ширина матрицы?');
+// const height = +prompt('Высота матрицы?');
+
+// function getMatrix(width, height) {
+//   let matrix = [];
+
+//   for (let x = 0; x < height; x++) {
+//     let row = [];
+
+//     for (let y = 0; y < width; y++) {
+//       row.push([x, y]);
+//     }
+
+//     matrix.push(row);
+//   }
+
+//   return matrix;
+// }
+
+// function getMatrix(width, height) {
+//   let matrix = new Array(height).fill().map(() => new Array(width).fill(''));
+
+//   let counter = 1;
+//   let startCol = 0;
+//   let endCol = width - 1;
+//   let startRow = 0;
+//   let endRow = height - 1;
+
+//   while (startCol <= endCol && startRow <= endRow) {
+//     for (let i = startCol; i <= endCol; i++) {
+//       matrix[startRow][i] = counter;
+//       counter++;
+//     }
+
+//     startRow++;
+
+//     for (let j = startRow; j < endRow; j++) {
+//       matrix[j][endCol] = counter;
+//       counter++;
+//     }
+
+//     endCol--;
+
+//     for (let c = endCol; c >= startCol; c--) {
+//       matrix[endRow][c] = counter;
+//       counter++;
+//     }
+
+//     endRow--;
+
+//     for (let i = endRow; i >= startRow; i--) {
+//       matrix[i][startCol] = counter;
+//       counter++;
+//     }
+
+//     startCol++;
+//   }
+
+//   return matrix;
+// }
+
+// console.log(getMatrix(width, height));
+
+// **** Task-49 -  Who likes it? ****
+// function likes(names) {
+//   if (names.length === 0) return 'no one likes this';
+//   if (names.length === 1) return names[0] + ' likes this';
+//   if (names.length === 2) return names[0] + ' and ' + names[1] + ' like this';
+//   if (names.length === 3) return names[0] + ', ' + names[1] + ' and ' + names[2] + ' like this';
+//   if (names.length >= 4)
+//     return names[0] + ', ' + names[1] + ' and ' + String(names.length - 2) + ' others like this';
+// }
+
+// **** Task-50 -  Rot13 ****
+// function rot13(message) {
+//   let alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz');
+//   let alphabetRot = Array.from('NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm');
+//   let res = [];
+
+//   flag: for (let index = 0; index < message.length; index++) {
+//     const element1 = message[index];
+//     for (let j = 0; j < alphabet.length; j++) {
+//       const element2 = alphabet[j];
+//       if (element1 === element2) {
+//         res.push(alphabetRot[j]);
+//         continue flag;
+//       } else if (/^[^a-zA-Z]+$/.test(element1)) {
+//         res.push(element1);
+//         continue flag;
+//       }
+//     }
+//   }
+//   return res.join('');
+// }
+// console.log(rot13('test'));
+
+// function rot13(message) {
+//   var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+//   var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+//   return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
+// }
