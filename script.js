@@ -1136,3 +1136,23 @@
 //   var b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
 //   return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
 // }
+
+// **** Task-51 getPrize ****
+function getPrize(quessScore, realScore) {
+  if (quessScore === realScore) return 2;
+  const quessArr = quessScore.split(':');
+  const realArr = quessScore.split(':');
+
+  for (let i = 0; i < quessArr.length; i++) {
+    const maxGuess = Math.max(...quessArr);
+    let maxIndex = quessArr.indexOf(maxGuess);
+    console.log(maxGuess);
+    for (let j = 0; j < realArr.length; j++) {
+      const maxReal = Math.max(...realScore);
+      i;
+    }
+  }
+}
+console.log(getPrize('1:2', '1:2')); // 2
+console.log(getPrize('2:1', '5:0')); // 1
+console.log(getPrize('3:0', '2:2')); // 0
